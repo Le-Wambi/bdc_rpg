@@ -1,13 +1,16 @@
 from tabulate import tabulate
+from Arme import Arme
 
+# Exemple d'utilisation de la classe Personnage
 class Personnage:
-    def __init__(self, nom, classe, niveau, points_de_vie, force, intelligence):
+    def __init__(self, nom, classe, niveau, points_de_vie, force, intelligence, arme):
         self.nom = nom
         self.classe = classe
         self.niveau = niveau
         self.points_de_vie = points_de_vie
         self.force = force
         self.intelligence = intelligence
+        self.arme = arme
         self.en_vie = True
 
     def afficher_info(self):
@@ -19,13 +22,21 @@ class Personnage:
     ["Points de vie", self.points_de_vie],
     ["Force", self.force],
     ["Intelligence", self.intelligence],
+    ["Arme", self.arme.nom if self.arme else "Aucune arme équipée"],
+    ["Dégats de l'arme", self.arme.degats if self.arme else 0],
     ["État", etat]
 ]
         print(tabulate(data,tablefmt="fancy_grid"))
 
     def attaquer(self,cible):
-        print(f"{self.nom} attaque {cible.nom}!")
-        degats = self.force * 2
+        if self.arme:
+            print(f"{self.nom} attaque {cible.nom} avec {self.arme.nom}!")
+            degats = self.force * 2 + self.arme.degats
+        else:
+            print(f"{self.nom} attaque {cible.nom}!")
+            degats = self.force * 2
+
+
         cible.subir_degats(degats)
 
     def subir_degats(self, degats):

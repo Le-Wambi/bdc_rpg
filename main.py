@@ -1,10 +1,12 @@
 from Personnage import Personnage
+from Arme import Arme
 # Exemple d'utilisation de joueur de la classe Personnage
-jour1 = Personnage("Aragorn", "Guerrier", 10, 100, 15, 5)
-jour2 = Personnage("Gandalf", "Magicien", 10, 80, 5, 15)
+epee_legendaire = Arme("Épée légendaire", 10)
+joueur1 = Personnage("Aragorn", "Guerrier", 10, 100, 15, 5, epee_legendaire)
+joueur2 = Personnage("Gandalf", "Magicien", 10, 80, 5, 15,"")
 
-jour1.afficher_info()
-jour2.afficher_info()
+joueur1.afficher_info()
+joueur2.afficher_info()
 
-jour1.attaquer(jour2)
-jour2.afficher_info()
+joueur1.attaquer(joueur2)
+joueur2.afficher_info()
