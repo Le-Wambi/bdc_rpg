@@ -42,3 +42,8 @@ class Personnage:
     def subir_degats(self, degats):
         self.points_de_vie -= degats
         print(f"{self.nom} subit {degats} points de degats!")
+
+        if self.points_de_vie <= 0:
+            self.en_vie = False
+            print(f"{self.nom} est mort.")
+        #commentaire très stupide
